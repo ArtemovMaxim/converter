@@ -1,0 +1,97 @@
+<meta charset="utf-8">
+
+<form name="choice">
+	<title>Обмен валюты</title>
+	<h1 style="color: #3774A4">В какую валюту конвертировать Ваши рубли?</h1>
+	<input name="choice" type="radio" value="" checked="checked"> В Доллары <!-- radio[1] - доллар -->
+	<input name="choice" type="radio" value=""> В Евро <!-- radio[2] - евро -->
+	<button onclick="exchange()">Конвертировать</button>
+</form>
+
+<script type="text/javascript">
+	const dollar = 75.20;
+	const euro = 91.13; 
+	var currency; 
+	var radio=document.getElementsByName('choice');
+
+function exchange() {
+
+	if  (radio[1].checked) {
+		exchangeUSD();
+	}
+	
+
+	if  (radio[2].checked) {
+		exchangeEUR();
+	}
+}
+	
+
+function exchangeUSD() {
+  		 //Dollar
+  		const dollar = 75.20;
+		var userMoney = +prompt("Введите числом сколько Рублей Вы хотите поменять");
+		var cent = (userMoney/dollar)<1;
+
+
+		switch (userMoney) {
+		
+			case (0): alert("Мы соболезнуем Вашему тяжелому финансовому положению");  break;
+
+			case ((userMoney/dollar) < 1): alert("Вам придется получить сумму монетами мелкого номинала"); break;
+ 		
+ 			case (isNaN(userMoney)): alert("Введите числом сколько Рублей Вы хотите поменять"); break;
+ 		
+ 			default: alert("К выдаче: " + (userMoney/dollar).toFixed(2) + " Долларов"); break;
+ 			
+ 		}
+
+ 	}		 	 
+
+
+function exchangeEUR() { //Euro
+	var userMoney = +prompt("Введите цифрами сколько Рублей Вы хотите поменять");
+
+
+		
+/*		while ((userMoney/euro) < 1 && ((userMoney/euro) !== 0))  {
+			alert("Вам придется получить сумму монетами мелкого номинала");
+		} 
+
+		while (isNaN(userMoney)){
+			var userMoney = +prompt("Пожалуйста, введите цифрами сколько Рублей Вы хотите поменять!");
+		}
+
+		while ((userMoney < 0) && ((userMoney/euro) < 0)) {
+			var userMoney = +prompt("Вы хотите занять денег? Если нет, то введите положительным числом сколько Рублей Вы хотите поменять!");
+		}
+
+		while (userMoney = +prompt("Введите цифрами сколько Рублей Вы хотите поменять") == 0) {
+			alert("С нулем в кармане лучше не выходит на улицу...");
+		}
+		
+
+		alert("К выдаче: " + (userMoney/euro).toFixed(2) + " Евро");
+
+
+}*/
+
+
+			if (userMoney == 0) {
+				alert("Мы соболезнуем Вашему тяжелому финансовому положению");
+			}		else if  ((userMoney/euro) < 1) {
+						alert("Вам придется получить сумму монетами мелкого номинала");
+						alert("К выдаче: " + (userMoney/euro).toFixed(2) + " Евро")	
+			} 		else if (isNaN(userMoney)) {
+ 						userMoney = +prompt("Пожалуйста, введите цифрами сколько Рублей Вы хотите поменять");
+			}		else if (userMoney < 0) {
+						alert("Вы хотите занять денег? Если нет, то введите положительно число!");
+						userMoney = +prompt("Введите числом сколько Рублей Вы хотите поменять");
+					}
+ 				else {
+					alert("К выдаче: " + (userMoney/euro).toFixed(2) + " Евро");
+			 	}
+			}
+
+
+</script>
